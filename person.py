@@ -1,4 +1,7 @@
 import random
+# randomizes a num 
+random.seed(42)
+
 # TODO: Import the virus clase
 class Virus():
     # virus needs a name, a mortality rate, and a reproduction rate
@@ -7,13 +10,7 @@ class Virus():
         self.mortality_rate = mortality_rate
         self.repro_rate = repro_rate
 
-def test_virus_instantiation():
-    # instantiate a virus to the virus class
-    virus = Virus("ebola", 0.7, 0.5)
-    # make sure the Virus properties pair to that of the instantiation
-    assert virus.name == "ebola"
-    assert virus.mortality_rate == 0.7
-    assert virus.repro_rate == 0.5
+
 
 
 class Person(object):
@@ -53,41 +50,70 @@ class Person(object):
             - If random number is smaller, person has died from disease.
                 is_alive is changed to false.
             - If random number is larger, person has survived disease.  Person's
-            is_vaccinated attribute is changed to True, and set self.infected to None.
+            is_vaccinated attribute is changed to True, and set self.infection to None.
     '''
 
-    def __init__(self, _id, is_vaccinated, infected=None):
+    def __init__(self, _id, is_vaccinated, infected=False):
         # TODO:  Finish this method.  Follow the instructions in the class documentation
         # to set the correct values for the following attributes.
         self._id = _id
         self.is_vaccinated = is_vaccinated
-        self.is_alive = None
+        self.is_alive = True
         self.infected = infected
-        self.alive = True
         self.infection = None
 
 
-    def did_survive_infection(self):
+    def did_survive_infection(self, mortality_rate):
         # TODO:  Finish this method. Follow the instructions in the class documentation
+        # TODO: You will need to decide what parameters you pass into this method based on how you structure your class.
         # for resolve_infection.  If person dies, set is_alive to False and return False.
-        # If person lives, set is_vaccinated = True, infected = None, return True. 
-        random_number = random.uniform(0, 1)
-        print(random_number) 
-        if self.infected != None:
-            if random_number <= self.infected.mortality_rate:
-                print("person has died :(")
+        # If person lives, set is_vaccinated = True, infection = None, return True.
+        if self.infection != None:
+            random_number = random.uniform(0, 1)
+            if random_number <= mortality_rate:
                 self.is_alive = False
+                self.infected = False
+                self.is_vaccinated = False
                 return False
             else:
-                print("person is alive YAY!")
+                self.is_alive = True
                 self.is_vaccinated = True
-                self.infected = None
+                self.infected = False
+                self.infection = None
                 return True
+
+
+
+###### PYTEST ######
+
+
+
+def test_virus_instantiation():
+    # instantiate a virus to the virus class
+    virus = Virus("ebola", 0.7, 0.5)
+    # make sure the Virus properties pair to that of the instantiation
+    assert virus.name == "ebola"
+    assert virus.mortality_rate == 0.7
+    assert virus.repro_rate == 0.5
 
 def test_did_survive_infection():
     virus = Virus("ebola", 0.8, 0.5)
+    person1 = Person(301, False, True)
+    # edge case:
+    person1.infection = virus
+    assert person1.infection == virus
+    assert person1.did_survive_infection(person1.infection.mortality_rate) == False
+    assert person1.is_alive == False
+    assert person1.is_vaccinated == False
+    assert person1.infected == False
+
+def test_person_in_list():
+    population = []
+    virus = Virus("ebola", 0.8, 0.5)
     person = Person(301, False, virus)
-    assert person.did_survive_infection()
+    population.append(person)
+
+    assert len(population) == 1
 
 # if __name__ == "__main__":
 #     Virus("ebola", 0.8, 0.5)
