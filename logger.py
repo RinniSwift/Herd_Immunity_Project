@@ -67,7 +67,10 @@ class Logger(object):
         # since 'w' overwrites the file.
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
+        f = open(file_name, "w+")
+        f.write("the population size is {} with {} of people vaccinated the virus name is {} that had a mortality rate of {} with a basic reproduction numer of {} \n".format(pop_size, vacc_percentage, virus_name, mortality_rate, basic_repro_num))
+        f.close()
+
 
     def log_interaction(self, person1, person2, did_infect=None,
                         person2_vacc=None, person2_sick=None):
@@ -104,3 +107,5 @@ class Logger(object):
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
         pass
+
+logger = Logger("createdLoggerFile")
