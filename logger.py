@@ -1,3 +1,4 @@
+from person import Person
 class Logger(object):
     '''
     Utility class responsible for logging all interactions of note during the
@@ -67,9 +68,11 @@ class Logger(object):
         # since 'w' overwrites the file.
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        f = open(file_name, "w+")
-        f.write("the population size is {} with {} of people vaccinated the virus name is {} that had a mortality rate of {} with a basic reproduction numer of {} \n".format(pop_size, vacc_percentage, virus_name, mortality_rate, basic_repro_num))
+        f = open(self.file_name, "w+")
+        f.write("population size: {} \tvaccination percentage: {} \tvirus name: {} \tmortality rate: {} \treproduction number: {} \n".format(pop_size, vacc_percentage, virus_name, mortality_rate, basic_repro_num))
         f.close()
+
+
 
 
     def log_interaction(self, person1, person2, did_infect=None,
@@ -85,7 +88,20 @@ class Logger(object):
         # all the possible edge cases!
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
+
+        # - Expects person1 and person2 as person objects.
+        # - Expects did_infect, person2_vacc, and person2_sick as Booleans, if passed.
+        # - Between the values passed with did_infect, person2_vacc, and person2_sick, this method
+        #     should be able to determine exactly what happened in the interaction and create a String
+        #     saying so.
+        # - The format of the log should be "{person1.ID} infects {person2.ID}", or, for other edge
+        #     cases, "{person1.ID} didn't infect {person2.ID} because {'vaccinated' or 'already sick'}"
+        # - Appends the interaction to logfile.
+
+        f = open(self.file_name, 'a')
+        if did_infect == True:
+            f.write("{} infects {}\n".format(person1._id, person2._id))
+
 
     def log_infection_survival(self, person, did_die_from_infection):
         # TODO: Finish this method.  The Simulation object should use this method to log
@@ -95,7 +111,24 @@ class Logger(object):
         # on the format of the log.
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
+
+        # - Expects person as Person object.
+        # - Expects bool for did_die_from_infection, with True denoting they died from
+        #     their infection and False denoting they survived and became immune.
+        # - The format of the log should be "{person.ID} died from infection" or
+        #     "{person.ID} survived infection."
+        # - Appends the results of the infection to the logfile.
+        
+        person = Person()
+        if person.is_alive == True:
+            did_die_from_infection = False
+            f.write("{} survived infection.\n".format(person._id))
+            f.close()
+        else:
+            did_die_from_infection = True
+            f.write("{} died from infection\n".format(person._id))
+            f.close()
+
 
     def log_time_step(self, time_step_number):
         # TODO: Finish this method.  This method should log when a time step ends, and a
@@ -106,6 +139,21 @@ class Logger(object):
         # to compute these statistics for you, as a Logger's job is just to write logs!
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
 
-logger = Logger("createdLoggerFile")
+        # - Expects time_step_number as an Int.
+        # - This method should write a log telling us when one time step ends, and
+        #     the next time step begins.  The format of this log should be:
+        #         "Time step {time_step_number} ended, beginning {time_step_number + 1}..."
+        # - STRETCH CHALLENGE DETAILS:
+        #     - If you choose to extend this method, the format of the summary statistics logged
+        #         are up to you.  At minimum, it should contain:
+        #             - The number of people that were infected during this specific time step.
+        #             - The number of people that died on this specific time step.
+        #             - The total number of people infected in the population, including the newly
+        #                 infected
+        #             - The total number of dead, including those that died during this time step.
+        
+        f = open(self.file_name, 'a')
+        new = time_step_number + 1
+        f.write("Time step {} ended, beginning {}...\n".format(time_step_number, new))
+        f.close()

@@ -1,0 +1,5 @@
+[
+  "person.py::test_virus_instantiation",
+  "person.py::test_did_survive_infection",
+  "person.py::test_person_in_list"
+]
