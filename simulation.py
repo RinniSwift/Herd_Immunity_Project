@@ -267,9 +267,9 @@ class Simulation(object):
         #   - Set this Person's .infected attribute to True.
         # NOTE: Once you have iterated through the entire list of self.newly_infected, remember
         # to reset self.newly_infected back to an empty list!
-        for idd in self.newly_infected:
+        for ID in self.newly_infected:
             for person in self.population:
-                if idd == person._id:
+                if ID == person._id:
                     person.infected = True
         self.newly_infected = []
 
@@ -292,7 +292,7 @@ debug = True
 
 if __name__ == "__main__":
     if debug:
-        sim = Simulation(5, 0.4, "ryan", 0.6, 0.5)
+        sim = Simulation(10, 0.4, "Ebola", 0.6, 0.5)
         sim.run()
         print(sim.current_infected)
         print(sim.total_dead)
