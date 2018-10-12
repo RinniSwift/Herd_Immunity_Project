@@ -291,25 +291,16 @@ class Simulation(object):
 debug = True
 
 if __name__ == "__main__":
-    if debug:
-        sim = Simulation(10, 0.4, "Ebola", 0.6, 0.5)
-        sim.run()
-        print(sim.current_infected)
-        print(sim.total_dead)
-        print(len(sim.population))
-        print('debug mode')
-
+    params = sys.argv[1:]
+    pop_size = int(params[0])
+    vacc_percentage = float(params[1])
+    virus_name = str(params[2])
+    mortality_rate = float(params[3])
+    basic_repro_num = float(params[4])
+    if len(params) == 6:
+        initial_infected = int(params[5])
     else:
-        params = sys.argv[1:]
-        pop_size = int(params[0])
-        vacc_percentage = float(params[1])
-        virus_name = str(params[2])
-        mortality_rate = float(params[3])
-        basic_repro_num = float(params[4])
-        if len(params) == 6:
-            initial_infected = int(params[5])
-        else:
-            initial_infected = 1
-        simulation = Simulation(pop_size, vacc_percentage, virus_name, mortality_rate,
-                                basic_repro_num, initial_infected)
-        simulation.run()
+        initial_infected = 1
+    simulation = Simulation(pop_size, vacc_percentage, virus_name, mortality_rate,
+                            basic_repro_num, initial_infected)
+    simulation.run()
