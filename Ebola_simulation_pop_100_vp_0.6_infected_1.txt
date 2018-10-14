@@ -1,0 +1,151 @@
+population size: 100 
+vaccination percentage: 0.6 
+virus name: Ebola 
+mortality rate: 0.6 
+reproduction number: 0.7 
+
+0 infects 1
+0 infects 99
+0 infects 84
+0 infects 38
+0 infects 97
+0 didn't infect 66 because person is already infected: False or person is vaccinated: True
+0 infects 21
+0 infects 22
+0 infects 72
+0 infects 7
+0 didn't infect 92 because person is already infected: False or person is vaccinated: True
+0 didn't infect 77 because person is already infected: False or person is vaccinated: True
+0 didn't infect 32 because person is already infected: False or person is vaccinated: True
+0 infects 19
+0 infects 55
+0 didn't infect 6 because person is already infected: False or person is vaccinated: True
+0 infects 34
+0 infects 29
+0 infects 56
+0 infects 58
+0 didn't infect 25 because person is already infected: False or person is vaccinated: True
+0 infects 15
+0 infects 39
+0 didn't infect 54 because person is already infected: False or person is vaccinated: True
+0 infects 5
+0 infects 64
+0 infects 31
+0 didn't infect 65 because person is already infected: False or person is vaccinated: True
+0 infects 30
+Time step 1 ended, beginning 2...
+0 infects 62
+0 didn't infect 49 because person is already infected: False or person is vaccinated: True
+0 infects 61
+0 infects 73
+0 infects 37
+0 didn't infect 93 because person is already infected: False or person is vaccinated: True
+0 infects 75
+0 infects 87
+0 infects 41
+Time step 2 ended, beginning 3...
+-------------------------------------------
+infected person ID: 0
+infected person ID: 1
+infected person ID: 5
+infected person ID: 7
+infected person ID: 15
+infected person ID: 19
+infected person ID: 21
+infected person ID: 22
+infected person ID: 29
+infected person ID: 30
+infected person ID: 31
+infected person ID: 34
+infected person ID: 37
+infected person ID: 38
+infected person ID: 39
+infected person ID: 41
+infected person ID: 55
+infected person ID: 56
+infected person ID: 58
+infected person ID: 61
+infected person ID: 62
+infected person ID: 64
+infected person ID: 72
+infected person ID: 73
+infected person ID: 75
+infected person ID: 84
+infected person ID: 87
+infected person ID: 97
+infected person ID: 99
+-------------------------------------------
+immune person ID: 66
+immune person ID: 92
+immune person ID: 77
+immune person ID: 32
+immune person ID: 6
+immune person ID: 25
+immune person ID: 54
+immune person ID: 65
+immune person ID: 49
+immune person ID: 93
+-------------------------------------------
+initial immune person ID: 14
+initial immune person ID: 88
+initial immune person ID: 69
+initial immune person ID: 59
+initial immune person ID: 96
+initial immune person ID: 67
+initial immune person ID: 13
+initial immune person ID: 86
+initial immune person ID: 40
+initial immune person ID: 90
+initial immune person ID: 71
+initial immune person ID: 85
+initial immune person ID: 27
+initial immune person ID: 76
+initial immune person ID: 89
+initial immune person ID: 45
+initial immune person ID: 51
+initial immune person ID: 43
+initial immune person ID: 33
+initial immune person ID: 91
+initial immune person ID: 10
+initial immune person ID: 11
+initial immune person ID: 78
+initial immune person ID: 8
+initial immune person ID: 26
+initial immune person ID: 42
+initial immune person ID: 95
+initial immune person ID: 35
+initial immune person ID: 70
+initial immune person ID: 63
+initial immune person ID: 81
+initial immune person ID: 83
+initial immune person ID: 20
+initial immune person ID: 53
+initial immune person ID: 50
+initial immune person ID: 4
+initial immune person ID: 68
+initial immune person ID: 60
+initial immune person ID: 3
+initial immune person ID: 24
+initial immune person ID: 46
+initial immune person ID: 12
+initial immune person ID: 79
+initial immune person ID: 47
+initial immune person ID: 52
+initial immune person ID: 9
+initial immune person ID: 48
+initial immune person ID: 36
+initial immune person ID: 82
+initial immune person ID: 94
+initial immune person ID: 74
+initial immune person ID: 80
+initial immune person ID: 57
+initial immune person ID: 17
+initial immune person ID: 2
+initial immune person ID: 16
+initial immune person ID: 44
+initial immune person ID: 23
+initial immune person ID: 18
+initial immune person ID: 28
+initial immune person ID: 98
+-------------------------------------------
+conclusion: 61 initially immune people, 29 infected people, and 10 survivors

@@ -69,7 +69,7 @@ class Logger(object):
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
         f = open(self.file_name, "w+")
-        f.write("population size: {} \tvaccination percentage: {} \tvirus name: {} \tmortality rate: {} \treproduction number: {} \n".format(pop_size, vacc_percentage, virus_name, mortality_rate, basic_repro_num))
+        f.write("population size: {} \nvaccination percentage: {} \nvirus name: {} \nmortality rate: {} \nreproduction number: {} \n\n".format(pop_size, vacc_percentage, virus_name, mortality_rate, basic_repro_num))
         f.close()
 
 
@@ -101,7 +101,9 @@ class Logger(object):
         f = open(self.file_name, 'a')
         if did_infect == True:
             f.write("{} infects {}\n".format(person1._id, person2._id))
-
+        elif did_infect == False:
+            f.write("{} didn't infect {} because person is already infected: {} or person is vaccinated: {}\n".format(person1._id, person2._id, person2_sick, person2_vacc))
+        f.close()
 
     def log_infection_survival(self, person, did_die_from_infection):
         # TODO: Finish this method.  The Simulation object should use this method to log
@@ -122,13 +124,42 @@ class Logger(object):
         person = Person()
         if person.is_alive == True:
             did_die_from_infection = False
+            f = open(self.file_name, 'a')
             f.write("{} survived infection.\n".format(person._id))
             f.close()
         else:
             did_die_from_infection = True
+            f = open(self.file_name, 'a')
             f.write("{} died from infection\n".format(person._id))
             f.close()
 
+
+    def log_total_initial_immune_people(self, person):
+
+        f = open(self.file_name, 'a')
+        f.write("initial immune person ID: {}\n".format(person._id))
+        f.close()
+
+    def log_total_infected_people(self, person):
+
+        f = open(self.file_name, 'a')
+        f.write("infected person ID: {}\n".format(person._id))
+        f.close()
+
+
+    def log_organizing_file_line(self):
+        f = open(self.file_name, 'a')
+        f.write("-------------------------------------------\n")
+
+    def log_total_immune_people(self, person):
+        f = open(self.file_name, 'a')
+        f.write("immune person ID: {}\n".format(person._id))
+        f.close()
+
+    def log_conclusion_infection(self, init_immune_person, infected_people, safe_people):
+        f = open(self.file_name, 'a')
+        f.write("conclusion: {} initially immune people, {} infected people, and {} survivors".format(len(init_immune_person), len(infected_people), len(safe_people)))
+        f.close()
 
     def log_time_step(self, time_step_number):
         # TODO: Finish this method.  This method should log when a time step ends, and a
